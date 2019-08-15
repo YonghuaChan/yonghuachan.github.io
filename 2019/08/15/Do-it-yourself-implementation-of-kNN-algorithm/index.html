@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
+  <meta name="description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
 <meta name="keywords" content="knn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kNN算法的DIY实现(仿照scikit-learn)">
 <meta property="og:url" content="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/index.html">
 <meta property="og:site_name" content="Yukirito&#39;s cookbook">
-<meta property="og:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
+<meta property="og:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T15:49:27.756Z">
+<meta property="og:updated_time" content="2019-08-15T15:52:38.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kNN算法的DIY实现(仿照scikit-learn)">
-<meta name="twitter:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
+<meta name="twitter:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
   <link rel="canonical" href="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/">
 
 
@@ -263,7 +263,7 @@
                 
               
 
-              <time title="创建时间：2019-08-15 23:24:13 / 修改时间：23:49:27" itemprop="dateCreated datePublished" datetime="2019-08-15T23:24:13+08:00">2019-08-15</time>
+              <time title="创建时间：2019-08-15 23:24:13 / 修改时间：23:52:38" itemprop="dateCreated datePublished" datetime="2019-08-15T23:24:13+08:00">2019-08-15</time>
             </span>
           
             
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>911</span>
+              <span>914</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -330,7 +330,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="什么是kNN算法"><a href="#什么是kNN算法" class="headerlink" title="什么是kNN算法?"></a><font color="#E16B8C">什么是kNN算法?</font></h2><p>kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。<br>其特点是: </p>
+        <h2 id="什么是kNN算法"><a href="#什么是kNN算法" class="headerlink" title="什么是kNN算法?"></a><font color="#E16B8C">什么是kNN算法?</font></h2><p>kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。</p>
+<a id="more"></a>
+
+<p>其特点是: </p>
 <ul>
 <li>思想极度简单</li>
 <li>应用数学知识几乎为零</li>
