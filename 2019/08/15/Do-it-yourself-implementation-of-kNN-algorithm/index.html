@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="Start3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
-<meta name="keywords" content="Python,ML,Thinking">
+  <meta name="description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
+<meta name="keywords" content="knn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First Blog">
-<meta property="og:url" content="https://yonghuachan.github.io/2019/08/14/first-blog/index.html">
+<meta property="og:title" content="kNN算法的DIY实现(仿照scikit-learn)">
+<meta property="og:url" content="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/index.html">
 <meta property="og:site_name" content="Yukirito&#39;s cookbook">
-<meta property="og:description" content="Start3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
+<meta property="og:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T14:52:31.682Z">
+<meta property="og:updated_time" content="2019-08-15T15:49:27.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="First Blog">
-<meta name="twitter:description" content="Start3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
-  <link rel="canonical" href="https://yonghuachan.github.io/2019/08/14/first-blog/">
+<meta name="twitter:title" content="kNN算法的DIY实现(仿照scikit-learn)">
+<meta name="twitter:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。其特点是:   思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高  kNN算法执行流程 根据欧几里得距离公式求出样">
+  <link rel="canonical" href="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>First Blog | Yukirito's cookbook</title>
+  <title>kNN算法的DIY实现(仿照scikit-learn) | Yukirito's cookbook</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2019/08/14/first-blog/">
+    <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yukirito">
@@ -246,7 +246,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">First Blog
+          <h1 class="post-title" itemprop="name headline">kNN算法的DIY实现(仿照scikit-learn)
 
             
           </h1>
@@ -263,19 +263,11 @@
                 
               
 
-              <time title="创建时间：2019-08-14 22:18:24" itemprop="dateCreated datePublished" datetime="2019-08-14T22:18:24+08:00">2019-08-14</time>
+              <time title="创建时间：2019-08-15 23:24:13 / 修改时间：23:49:27" itemprop="dateCreated datePublished" datetime="2019-08-15T23:24:13+08:00">2019-08-15</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-15 22:52:31" itemprop="dateModified" datetime="2019-08-15T22:52:31+08:00">2019-08-15</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -284,7 +276,21 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MISC/" itemprop="url" rel="index"><span itemprop="name">MISC</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
 
                 
                 
@@ -301,7 +307,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>368</span>
+              <span>911</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -324,18 +330,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a><font color="#E16B8C">Start</font></h1><h2 id="3W-amp-1H"><a href="#3W-amp-1H" class="headerlink" title="3W&amp;1H?"></a><font color="#E16B8C">3W&amp;1H?</font></h2><h3 id="你是谁-Who"><a href="#你是谁-Who" class="headerlink" title="你是谁? (Who)"></a><font color="#E16B8C">你是谁? (Who)</font></h3><p>我是Yukirito, 一个兴趣使然的小朋友  </p>
-<a id="more"></a>
-<h3 id="为什么要做Blog-Why"><a href="#为什么要做Blog-Why" class="headerlink" title="为什么要做Blog? (Why)"></a><font color="#E16B8C">为什么要做Blog? (Why)</font></h3><p>大约是3个月前, 我在尝试理解支持向量机的时候, 刷到了<a href="http://freemind.pluskid.org/" target="_blank" rel="noopener">pluskid</a>大神的Blog, 感到十分愉悦. Blog不像社交媒体, 输出碎片化信息. 而是类似于书记的子集. 按所含信息量多少来举例, 书籍&gt;Blog&gt;朋友圈, 所以Blog比较好输出较为结构化的信息.  </p>
-<h3 id="这个Blog是搞什么的-What"><a href="#这个Blog是搞什么的-What" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>自己之前一直是在印象笔记上做笔记, 现在将逐步把闭门的数据选择后转移到Blog上来<br>包括但不限于: </p>
+        <h2 id="什么是kNN算法"><a href="#什么是kNN算法" class="headerlink" title="什么是kNN算法?"></a><font color="#E16B8C">什么是kNN算法?</font></h2><p>kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。<br>其特点是: </p>
 <ul>
-<li>主业CS学习笔记</li>
-<li>副业各种点歪了技能书的学习笔记</li>
-<li>游戏攻略</li>
-<li>个人心得</li>
+<li>思想极度简单</li>
+<li>应用数学知识几乎为零</li>
+<li>效果好</li>
+<li>可以解释机器学习算法使用过程中的很多细节问题</li>
+<li>更完整刻画一起学习应用的流程</li>
+<li>分类精度高, 对缺失值不敏感</li>
+<li>懒加载, 模型复杂度高</li>
 </ul>
-<h3 id="这个Blog是搞什么的-What-1"><a href="#这个Blog是搞什么的-What-1" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>emmmm还没开始更就有鸽的预感…原则上来说更新间隔不大于一周.   </p>
-
+<h2 id="kNN算法执行流程"><a href="#kNN算法执行流程" class="headerlink" title="kNN算法执行流程"></a><font color="#E16B8C">kNN算法执行流程</font></h2><ol>
+<li>根据欧几里得距离公式求出样本点与所有点的距离, </li>
+<li>然后按照距离升序排序, 取出前k个点, </li>
+<li>样本点是什么类别, 那么k个点就是什么类别</li>
+</ol>
+<p>kNN的实质: k个样本如果足够地相似的话, 那么他们就很有可能属于同一个类别</p>
+<h2 id="自己动手实现kNN算法"><a href="#自己动手实现kNN算法" class="headerlink" title="自己动手实现kNN算法"></a><font color="#E16B8C">自己动手实现kNN算法</font></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kNN_classify</span><span class="params">(k, X_train, y_train, x)</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= k &lt;= X_train.shape[<span class="number">0</span>], <span class="string">"k must be valid"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">0</span>] == y_train.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the size of X_train must equal to the size of y_train"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">1</span>] == x.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the feature number of x must be equal to X_train"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    distances = [sqrt(np.sum((x_train - x)**<span class="number">2</span>)) <span class="keyword">for</span> x_train <span class="keyword">in</span> X_train]</span><br><span class="line">    nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    topK_y = [y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:k]]</span><br><span class="line">    votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -368,6 +379,15 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/knn/" rel="tag"># knn</a>
+            
+          </div>
+        
 
         
   <div class="post-widgets">
@@ -387,15 +407,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/08/14/first-blog/" rel="next" title="First Blog">
+                  <i class="fa fa-chevron-left"></i> First Blog
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/" rel="prev" title="kNN算法的DIY实现(仿照scikit-learn)">
-                  kNN算法的DIY实现(仿照scikit-learn) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -540,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Start"><span class="nav-number">1.</span> <span class="nav-text">Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3W-amp-1H"><span class="nav-number">1.1.</span> <span class="nav-text">3W&amp;1H?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#你是谁-Who"><span class="nav-number">1.1.1.</span> <span class="nav-text">你是谁? (Who)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要做Blog-Why"><span class="nav-number">1.1.2.</span> <span class="nav-text">为什么要做Blog? (Why)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个Blog是搞什么的-What"><span class="nav-number">1.1.3.</span> <span class="nav-text">这个Blog是搞什么的? (What)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个Blog是搞什么的-What-1"><span class="nav-number">1.1.4.</span> <span class="nav-text">这个Blog是搞什么的? (What)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是kNN算法"><span class="nav-number">1.</span> <span class="nav-text">什么是kNN算法?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kNN算法执行流程"><span class="nav-number">2.</span> <span class="nav-text">kNN算法执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己动手实现kNN算法"><span class="nav-number">3.</span> <span class="nav-text">自己动手实现kNN算法</span></a></li></ol></div>
             
 
           </div>
