@@ -20,6 +20,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
 
 
 <script id="hexo-configurations">
@@ -44,8 +45,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
@@ -55,17 +56,17 @@
   };
 </script>
 
-  <meta name="description" content="记录生活!">
+  <meta name="description" content="Yonghua Chan(陈 永华)">
 <meta name="keywords" content="Python,ML,Thinking">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yukirito&#39;s cookbook">
 <meta property="og:url" content="https://yonghuachan.github.io/categories/日记/index.html">
 <meta property="og:site_name" content="Yukirito&#39;s cookbook">
-<meta property="og:description" content="记录生活!">
+<meta property="og:description" content="Yonghua Chan(陈 永华)">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yukirito&#39;s cookbook">
-<meta name="twitter:description" content="记录生活!">
+<meta name="twitter:description" content="Yonghua Chan(陈 永华)">
   <link rel="canonical" href="https://yonghuachan.github.io/categories/日记/">
 
 
@@ -203,9 +204,36 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
   </ul>
 
 </nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup">
+  <div class="search-header">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <div class="search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="search-input">
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+  <div id="search-result"></div>
+</div>
+
+
+  </div>
 </div>
     </header>
 
@@ -275,7 +303,7 @@
         
           <a class="post-title-link" href="/2019/08/14/first-blog/" itemprop="url">
             
-              <span itemprop="name">first_blog: 第一篇blog</span>
+              <span itemprop="name">first blog: 第一篇blog</span>
             
           </a>
         
@@ -330,7 +358,7 @@
       src="/images/small_sheep.jpg"
       alt="Yukirito">
   <p class="site-author-name" itemprop="name">Yukirito</p>
-  <div class="site-description motion-element" itemprop="description">记录生活!</div>
+  <div class="site-description motion-element" itemprop="description">Yonghua Chan(陈 永华)</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
@@ -412,9 +440,13 @@
     </span>
     <span title="站点阅读时长">1 分钟</span>
 </div>
+
+<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+  <span class="post-meta-divider">|</span>-->
+
+<!--
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>-->
 
         
 
@@ -433,10 +465,28 @@
       </div>
 
     
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
 
   </div>
 
   
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -479,6 +529,8 @@
 
 
 
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
