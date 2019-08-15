@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>first blog: 第一篇blog</title>
-      <link href="/2019/08/14/first-blog/"/>
-      <url>/2019/08/14/first-blog/</url>
-      
-        <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>正文<br>正文<br>正文<br>正文</p><a id="more"></a><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题-1"><a href="#三级标题-1" class="headerlink" title="三级标题"></a>三级标题</h3><p>正文<br>正文<br>正文<br>正文</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[first blog: 第一篇blog]]></title>
+    <url>%2F2019%2F08%2F14%2Ffirst-blog%2F</url>
+    <content type="text"><![CDATA[一级标题二级标题三级标题正文正文正文正文 一级标题二级标题三级标题正文正文正文正文]]></content>
       <categories>
-          
-          <category> 日记 </category>
-          
+        <category>日记</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-  
-  
+  </entry>
 </search>
