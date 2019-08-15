@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[first blog: 第一篇blog]]></title>
-    <url>%2F2019%2F08%2F14%2Ffirst-blog%2F</url>
-    <content type="text"><![CDATA[一级标题二级标题三级标题正文正文正文正文 一级标题二级标题三级标题正文正文正文正文]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>First Blog</title>
+      <link href="/2019/08/14/first-blog/"/>
+      <url>/2019/08/14/first-blog/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a><font color="#E16B8C">Start</font></h1><h2 id="3W-amp-1H"><a href="#3W-amp-1H" class="headerlink" title="3W&amp;1H?"></a><font color="#E16B8C">3W&amp;1H?</font></h2><h3 id="你是谁-Who"><a href="#你是谁-Who" class="headerlink" title="你是谁? (Who)"></a><font color="#E16B8C">你是谁? (Who)</font></h3><p>我是Yukirito, 一个兴趣使然的小朋友  </p><a id="more"></a><h3 id="为什么要做Blog-Why"><a href="#为什么要做Blog-Why" class="headerlink" title="为什么要做Blog? (Why)"></a><font color="#E16B8C">为什么要做Blog? (Why)</font></h3><p>大约是3个月前, 我在尝试理解支持向量机的时候, 刷到了<a href="http://freemind.pluskid.org/" target="_blank" rel="noopener">pluskid</a>大神的Blog, 感到十分愉悦. Blog不像社交媒体, 输出碎片化信息. 而是类似于书记的子集. 按所含信息量多少来举例, 书籍&gt;Blog&gt;朋友圈, 所以Blog比较好输出较为结构化的信息.  </p><h3 id="这个Blog是搞什么的-What"><a href="#这个Blog是搞什么的-What" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>自己之前一直是在印象笔记上做笔记, 现在将逐步把闭门的数据选择后转移到Blog上来<br>包括但不限于: </p><ul><li>主业CS学习笔记</li><li>副业各种点歪了技能书的学习笔记</li><li>游戏攻略</li><li>个人心得  <h3 id="那这个Blog你怎么搞-How"><a href="#那这个Blog你怎么搞-How" class="headerlink" title="那这个Blog你怎么搞? (How?)"></a>那这个Blog你怎么搞? (How?)</h3>emmmm还没开始更就有鸽的预感…原则上来说更新间隔不大于一周.   </li></ul>]]></content>
+      
+      
       <categories>
-        <category>日记</category>
+          
+          <category> MISC </category>
+          
       </categories>
-  </entry>
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
