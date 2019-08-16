@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="Start -&amp;gt; 3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
+  <meta name="description" content="python中yield的用法详解本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/mieleizhi0522/article/details/82142856 原文作者吐槽:   首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，">
 <meta name="keywords" content="Python,ML,Thinking">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First Blog">
-<meta property="og:url" content="https://yonghuachan.github.io/2019/08/14/first-blog/index.html">
+<meta property="og:title" content="python中yield的用法详解">
+<meta property="og:url" content="https://yonghuachan.github.io/2019/08/16/yield_in_python/index.html">
 <meta property="og:site_name" content="Yukirito&#39;s cookbook">
-<meta property="og:description" content="Start -&amp;gt; 3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
+<meta property="og:description" content="python中yield的用法详解本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/mieleizhi0522/article/details/82142856 原文作者吐槽:   首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T02:17:34.353Z">
+<meta property="og:updated_time" content="2019-08-16T05:03:04.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="First Blog">
-<meta name="twitter:description" content="Start -&amp;gt; 3W&amp;amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友">
-  <link rel="canonical" href="https://yonghuachan.github.io/2019/08/14/first-blog/">
+<meta name="twitter:title" content="python中yield的用法详解">
+<meta name="twitter:description" content="python中yield的用法详解本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/mieleizhi0522/article/details/82142856 原文作者吐槽:   首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，">
+  <link rel="canonical" href="https://yonghuachan.github.io/2019/08/16/yield_in_python/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>First Blog | Yukirito's cookbook</title>
+  <title>python中yield的用法详解 | Yukirito's cookbook</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2019/08/14/first-blog/">
+    <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2019/08/16/yield_in_python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yukirito">
@@ -246,7 +246,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">First Blog
+          <h1 class="post-title" itemprop="name headline">python中yield的用法详解
 
             
           </h1>
@@ -263,19 +263,11 @@
                 
               
 
-              <time title="创建时间：2019-08-14 22:18:24" itemprop="dateCreated datePublished" datetime="2019-08-14T22:18:24+08:00">2019-08-14</time>
+              <time title="创建时间：2019-08-16 11:50:41 / 修改时间：13:03:04" itemprop="dateCreated datePublished" datetime="2019-08-16T11:50:41+08:00">2019-08-16</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-16 10:17:34" itemprop="dateModified" datetime="2019-08-16T10:17:34+08:00">2019-08-16</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -284,7 +276,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MISC/" itemprop="url" rel="index"><span itemprop="name">MISC</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -301,7 +293,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>375</span>
+              <span>2.7k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -311,7 +303,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -324,17 +316,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Start-gt-3W-amp-1H"><a href="#Start-gt-3W-amp-1H" class="headerlink" title="Start -&gt; 3W&amp;1H?"></a><font color="#E16B8C">Start -&gt; 3W&amp;1H?</font></h1><h3 id="你是谁-Who"><a href="#你是谁-Who" class="headerlink" title="你是谁? (Who)"></a><font color="#E16B8C">你是谁? (Who)</font></h3><p>我是Yukirito, 一个兴趣使然的小朋友  </p>
+        <h1 id="python中yield的用法详解"><a href="#python中yield的用法详解" class="headerlink" title="python中yield的用法详解"></a>python中yield的用法详解</h1><p>本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。<br>原文链接：<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">https://blog.csdn.net/mieleizhi0522/article/details/82142856</a></p>
+<p>原文作者吐槽: </p>
+<blockquote>
+<p>首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，什么参数，什么传递的，还口口声声说自己的教程是最简单的，最浅显易懂的，我就想问没有有考虑过读者的感受。</p>
+</blockquote>
 <a id="more"></a>
-<h3 id="为什么要做Blog-Why"><a href="#为什么要做Blog-Why" class="headerlink" title="为什么要做Blog? (Why)"></a><font color="#E16B8C">为什么要做Blog? (Why)</font></h3><p>大约是3个月前, 我在尝试理解支持向量机的时候, 刷到了<a href="http://freemind.pluskid.org/" target="_blank" rel="noopener">pluskid</a>大神的Blog, 感到十分愉悦. Blog不像社交媒体, 输出碎片化信息. 而是类似于书记的子集. 按所含信息量多少来举例, 书籍&gt;Blog&gt;朋友圈, 所以Blog比较好输出较为结构化的信息.  </p>
-<h3 id="这个Blog是搞什么的-What"><a href="#这个Blog是搞什么的-What" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>自己之前一直是在印象笔记上做笔记, 现在将逐步把闭门的数据选择后转移到Blog上来<br>包括但不限于: </p>
-<ul>
-<li>主业CS学习笔记</li>
-<li>副业各种点歪了技能书的学习笔记</li>
-<li>游戏攻略</li>
-<li>个人心得</li>
-</ul>
-<h3 id="这个Blog是搞什么的-What-1"><a href="#这个Blog是搞什么的-What-1" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>emmmm还没开始更就有鸽的预感…原则上来说更新间隔不大于一周.   </p>
+
+<p>接下来是正题：</p>
+<p>首先，如果你还没有对yield有个初步分认识，那么你先把yield看做“return”，这个是直观的，它首先是个return，普通的return是什么意思，就是在程序中返回某个值，返回之后程序就不再往下运行了。看做return之后再把它看做一个是生成器（generator）的一部分（带yield的函数才是真正的迭代器），好了，如果你对这些不明白的话，那先把yield看做return,然后直接看下面的程序，你就会明白yield的全部意思了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"starting..."</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        res = <span class="keyword">yield</span> <span class="number">4</span></span><br><span class="line">        print(<span class="string">"res:"</span>,res)</span><br><span class="line">g = foo()</span><br><span class="line">print(next(g))</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(next(g))</span><br></pre></td></tr></table></figure>
+
+<p>就这么简单的几行代码就让你明白什么是yield，代码的输出这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line"><span class="number">4</span></span><br><span class="line">********************</span><br><span class="line">res: <span class="literal">None</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>我直接解释代码运行顺序，相当于代码单步调试：<br>1.程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，而是先得到一个生成器g(相当于一个对象)<br>2.直到调用next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环<br>3.程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，并没有执行赋值给res操作，此时next(g)语句执行完成，所以输出的前两行（第一个是while上面的print的结果,第二个是return出的结果）是执行print(next(g))的结果，<br>4.程序执行print(“<em>“</em>20)，输出20个*<br>5.又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作，这时候要注意，这个时候赋值操作的右边是没有值的（因为刚才那个是return出去了，并没有给赋值操作的左边传参数），所以这个时候res赋值是None,所以接着下面的输出就是res:None,<br>6.程序会继续在while里执行，又一次碰到yield,这个时候同样return 出4，然后程序停止，print函数输出的4就是这次return出的4.<br> <br><strong>到这里你可能就明白yield和return的关系和区别了，带yield的函数是一个生成器，而不是一个函数了，这个生成器有一个函数就是next函数，next就相当于“下一步”生成哪个数，这一次的next开始的地方是接着上一次的next停止的地方执行的，所以调用next的时候，生成器并不会从foo函数的开始执行，只是接着上一步停止的地方开始，然后遇到yield后，return出要生成的数，此步就结束。</strong><br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"starting..."</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        res = <span class="keyword">yield</span> <span class="number">4</span></span><br><span class="line">        print(<span class="string">"res:"</span>,res)</span><br><span class="line">g = foo()</span><br><span class="line">print(next(g))</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(g.send(<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+<p>再看一个这个生成器的send函数的例子，这个例子就把上面那个例子的最后一行换掉了，输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line"><span class="number">4</span></span><br><span class="line">********************</span><br><span class="line">res: <span class="number">7</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>先大致说一下send函数的概念：此时你应该注意到上面那个的紫色的字，还有上面那个res的值为什么是None，这个变成了7，到底为什么，这是因为，send是发送一个参数给res的，因为上面讲到，return的时候，并没有把4赋值给res，下次执行的时候只好继续执行赋值操作，只好赋值为None了，而如果用send的话，开始执行的时候，先接着上一次（return 4之后）执行，先把7赋值给了res,然后执行next的作用，遇见下一回的yield，return出结果后结束。<br> <br>5.程序执行g.send(7)，程序会从yield关键字那一行继续向下运行，send会把7这个值赋值给res变量<br>6.由于send方法中包含next()方法，所以程序会继续向下运行执行print方法，然后再次进入while循环<br>7.程序执行再次遇到yield关键字，yield会返回后面的值后，程序再次暂停，直到再次调用next方法或send方法。<br> <br> <br> <br>这就结束了，说一下，为什么用这个生成器，是因为如果用List的话，会占用更大的空间，比如说取0,1,2,3,4,5,6…………1000<br>你可能会这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    a=n</span><br></pre></td></tr></table></figure>
+
+<p>这个时候range(1000)就默认生成一个含有1000个数的list了，所以很占内存。<br>这个时候你可以用刚才的yield组合成生成器进行实现，也可以用xrange(1000)这个生成器实现<br>yield组合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def foo(num):</span><br><span class="line">    print(&quot;starting...&quot;)</span><br><span class="line">    while num&lt;10:</span><br><span class="line">        num=num+1</span><br><span class="line">        yield num</span><br><span class="line">for n in foo(0):</span><br><span class="line">    print(n)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p>xrange(1000):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for n in xrange(1000):</span><br><span class="line">    a=n</span><br></pre></td></tr></table></figure>
+
+<p>其中要注意的是python3时已经没有xrange()了，在python3中，range()就是xrange()了，你可以在python3中查看range()的类型，它已经是个&lt;class ‘range’&gt;了，而不是一个list了，毕竟这个是需要优化的。 </p>
 
     </div>
 
@@ -387,15 +401,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/" rel="next" title="kNN算法的DIY实现(仿照scikit-learn)">
+                  <i class="fa fa-chevron-left"></i> kNN算法的DIY实现(仿照scikit-learn)
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/" rel="prev" title="kNN算法的DIY实现(仿照scikit-learn)">
-                  kNN算法的DIY实现(仿照scikit-learn) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -542,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Start-gt-3W-amp-1H"><span class="nav-number">1.</span> <span class="nav-text">Start -&gt; 3W&amp;1H?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#你是谁-Who"><span class="nav-number">1.0.1.</span> <span class="nav-text">你是谁? (Who)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要做Blog-Why"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么要做Blog? (Why)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个Blog是搞什么的-What"><span class="nav-number">1.0.3.</span> <span class="nav-text">这个Blog是搞什么的? (What)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个Blog是搞什么的-What-1"><span class="nav-number">1.0.4.</span> <span class="nav-text">这个Blog是搞什么的? (What)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python中yield的用法详解"><span class="nav-number">1.</span> <span class="nav-text">python中yield的用法详解</span></a></li></ol></div>
             
 
           </div>
