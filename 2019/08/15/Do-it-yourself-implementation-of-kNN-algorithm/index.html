@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;kNN&amp;#x7B97;&amp;#x6CD5;?kNN&amp;#x7B97;&amp;#x6CD5;, &amp;#x53C8;&amp;#x53EB;K&amp;#x6700;&amp;#x8FD1;&amp;#x90BB;&amp;#x7B97;&amp;#x6CD5;, &amp;#x53EF;&amp;#x7528;&amp;#x4E8E;&amp;#x5206;&amp;#x7C7B;&amp;#x6216;&amp;#x8005;&amp;#x56DE;&amp;#x5F52;. &amp;#">
+  <meta name="description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
 <meta name="keywords" content="knn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kNN算法的DIY实现(仿照scikit-learn)">
 <meta property="og:url" content="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/index.html">
 <meta property="og:site_name" content="Yukirito&#39;s cookbook">
-<meta property="og:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;kNN&amp;#x7B97;&amp;#x6CD5;?kNN&amp;#x7B97;&amp;#x6CD5;, &amp;#x53C8;&amp;#x53EB;K&amp;#x6700;&amp;#x8FD1;&amp;#x90BB;&amp;#x7B97;&amp;#x6CD5;, &amp;#x53EF;&amp;#x7528;&amp;#x4E8E;&amp;#x5206;&amp;#x7C7B;&amp;#x6216;&amp;#x8005;&amp;#x56DE;&amp;#x5F52;. &amp;#">
+<meta property="og:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-16T02:06:20.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kNN算法的DIY实现(仿照scikit-learn)">
-<meta name="twitter:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;kNN&amp;#x7B97;&amp;#x6CD5;?kNN&amp;#x7B97;&amp;#x6CD5;, &amp;#x53C8;&amp;#x53EB;K&amp;#x6700;&amp;#x8FD1;&amp;#x90BB;&amp;#x7B97;&amp;#x6CD5;, &amp;#x53EF;&amp;#x7528;&amp;#x4E8E;&amp;#x5206;&amp;#x7C7B;&amp;#x6216;&amp;#x8005;&amp;#x56DE;&amp;#x5F52;. &amp;#">
+<meta name="twitter:description" content="什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。">
   <link rel="canonical" href="https://yonghuachan.github.io/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/">
 
 
@@ -345,26 +345,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="&#x4EC0;&#x4E48;&#x662F;kNN&#x7B97;&#x6CD5;"><a href="#&#x4EC0;&#x4E48;&#x662F;kNN&#x7B97;&#x6CD5;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;kNN&#x7B97;&#x6CD5;?"></a><font color="#E16B8C">&#x4EC0;&#x4E48;&#x662F;kNN&#x7B97;&#x6CD5;?</font></h2><p>kNN&#x7B97;&#x6CD5;, &#x53C8;&#x53EB;K&#x6700;&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;, &#x53EF;&#x7528;&#x4E8E;&#x5206;&#x7C7B;&#x6216;&#x8005;&#x56DE;&#x5F52;. &#x6240;&#x8C13;K&#x6700;&#x8FD1;&#x90BB;&#xFF0C;&#x5C31;&#x662F;k&#x4E2A;&#x6700;&#x8FD1;&#x7684;&#x90BB;&#x5C45;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x8BF4;&#x7684;&#x662F;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x5B83;&#x6700;&#x63A5;&#x8FD1;&#x7684;k&#x4E2A;&#x90BB;&#x5C45;&#x6765;&#x4EE3;&#x8868;&#x3002;</p>
+        <h2 id="什么是kNN算法"><a href="#什么是kNN算法" class="headerlink" title="什么是kNN算法?"></a><font color="#E16B8C">什么是kNN算法?</font></h2><p>kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。</p>
 <a id="more"></a>
 
-<p>&#x5176;&#x7279;&#x70B9;&#x662F;: </p>
+<p>其特点是: </p>
 <ul>
-<li>&#x601D;&#x60F3;&#x6781;&#x5EA6;&#x7B80;&#x5355;</li>
-<li>&#x5E94;&#x7528;&#x6570;&#x5B66;&#x77E5;&#x8BC6;&#x51E0;&#x4E4E;&#x4E3A;&#x96F6;</li>
-<li>&#x6548;&#x679C;&#x597D;</li>
-<li>&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x7EC6;&#x8282;&#x95EE;&#x9898;</li>
-<li>&#x66F4;&#x5B8C;&#x6574;&#x523B;&#x753B;&#x4E00;&#x8D77;&#x5B66;&#x4E60;&#x5E94;&#x7528;&#x7684;&#x6D41;&#x7A0B;</li>
-<li>&#x5206;&#x7C7B;&#x7CBE;&#x5EA6;&#x9AD8;, &#x5BF9;&#x7F3A;&#x5931;&#x503C;&#x4E0D;&#x654F;&#x611F;</li>
-<li>&#x61D2;&#x52A0;&#x8F7D;, &#x6A21;&#x578B;&#x590D;&#x6742;&#x5EA6;&#x9AD8;</li>
+<li>思想极度简单</li>
+<li>应用数学知识几乎为零</li>
+<li>效果好</li>
+<li>可以解释机器学习算法使用过程中的很多细节问题</li>
+<li>更完整刻画一起学习应用的流程</li>
+<li>分类精度高, 对缺失值不敏感</li>
+<li>懒加载, 模型复杂度高</li>
 </ul>
-<h2 id="kNN&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x6D41;&#x7A0B;"><a href="#kNN&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x6D41;&#x7A0B;" class="headerlink" title="kNN&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x6D41;&#x7A0B;"></a><font color="#E16B8C">kNN&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x6D41;&#x7A0B;</font></h2><ol>
-<li>&#x6839;&#x636E;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x8DDD;&#x79BB;&#x516C;&#x5F0F;&#x6C42;&#x51FA;&#x6837;&#x672C;&#x70B9;&#x4E0E;&#x6240;&#x6709;&#x70B9;&#x7684;&#x8DDD;&#x79BB;, </li>
-<li>&#x7136;&#x540E;&#x6309;&#x7167;&#x8DDD;&#x79BB;&#x5347;&#x5E8F;&#x6392;&#x5E8F;, &#x53D6;&#x51FA;&#x524D;k&#x4E2A;&#x70B9;, </li>
-<li>&#x6837;&#x672C;&#x70B9;&#x662F;&#x4EC0;&#x4E48;&#x7C7B;&#x522B;, &#x90A3;&#x4E48;k&#x4E2A;&#x70B9;&#x5C31;&#x662F;&#x4EC0;&#x4E48;&#x7C7B;&#x522B;</li>
+<h2 id="kNN算法执行流程"><a href="#kNN算法执行流程" class="headerlink" title="kNN算法执行流程"></a><font color="#E16B8C">kNN算法执行流程</font></h2><ol>
+<li>根据欧几里得距离公式求出样本点与所有点的距离, </li>
+<li>然后按照距离升序排序, 取出前k个点, </li>
+<li>样本点是什么类别, 那么k个点就是什么类别</li>
 </ol>
-<p><strong>kNN&#x7684;&#x5B9E;&#x8D28;: k&#x4E2A;&#x6837;&#x672C;&#x5982;&#x679C;&#x8DB3;&#x591F;&#x5730;&#x76F8;&#x4F3C;&#x7684;&#x8BDD;, &#x90A3;&#x4E48;&#x4ED6;&#x4EEC;&#x5C31;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x522B;</strong></p>
-<h2 id="&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5B9E;&#x73B0;kNN&#x7B97;&#x6CD5;"><a href="#&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5B9E;&#x73B0;kNN&#x7B97;&#x6CD5;" class="headerlink" title="&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5B9E;&#x73B0;kNN&#x7B97;&#x6CD5;"></a><font color="#E16B8C">&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5B9E;&#x73B0;kNN&#x7B97;&#x6CD5;</font></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kNN_classify</span><span class="params">(k, X_train, y_train, x)</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= k &lt;= X_train.shape[<span class="number">0</span>], <span class="string">&quot;k must be valid&quot;</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">0</span>] == y_train.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">&quot;the size of X_train must equal to the size of y_train&quot;</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">1</span>] == x.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">&quot;the feature number of x must be equal to X_train&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    distances = [sqrt(np.sum((x_train - x)**<span class="number">2</span>)) <span class="keyword">for</span> x_train <span class="keyword">in</span> X_train]</span><br><span class="line">    nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    topK_y = [y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:k]]</span><br><span class="line">    votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>kNN的实质: k个样本如果足够地相似的话, 那么他们就很有可能属于同一个类别</strong></p>
+<h2 id="自己动手实现kNN算法"><a href="#自己动手实现kNN算法" class="headerlink" title="自己动手实现kNN算法"></a><font color="#E16B8C">自己动手实现kNN算法</font></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kNN_classify</span><span class="params">(k, X_train, y_train, x)</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= k &lt;= X_train.shape[<span class="number">0</span>], <span class="string">"k must be valid"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">0</span>] == y_train.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the size of X_train must equal to the size of y_train"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">1</span>] == x.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the feature number of x must be equal to X_train"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    distances = [sqrt(np.sum((x_train - x)**<span class="number">2</span>)) <span class="keyword">for</span> x_train <span class="keyword">in</span> X_train]</span><br><span class="line">    nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    topK_y = [y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:k]]</span><br><span class="line">    votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
     </div>
 
     
