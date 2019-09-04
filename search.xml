@@ -13,8 +13,8 @@
     <url>%2F2019%2F08%2F16%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95(Python)%2F</url>
     <content type="text"><![CDATA[前言最近在重温数据结构与算法, 目前在Gitbook搞了一个学习笔记, Mark一下~]]></content>
       <categories>
-        <category>Python</category>
         <category>DataStructure</category>
+        <category>Python</category>
         <category>Algorithm</category>
       </categories>
   </entry>
@@ -31,9 +31,9 @@
     <url>%2F2019%2F08%2F15%2FDo-it-yourself-implementation-of-kNN-algorithm%2F</url>
     <content type="text"><![CDATA[什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。 其特点是: 思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高 kNN算法执行流程 根据欧几里得距离公式求出样本点与所有点的距离, 然后按照距离升序排序, 取出前k个点, 样本点是什么类别, 那么k个点就是什么类别 kNN的实质: k个样本如果足够地相似的话, 那么他们就很有可能属于同一个类别 自己动手实现kNN算法123456789101112131415161718192021222324import numpy as npfrom math import sqrtfrom collections import Counterdef kNN_classify(k, X_train, y_train, x): assert 1 &lt;= k &lt;= X_train.shape[0], "k must be valid" assert X_train.shape[0] == y_train.shape[0], \ "the size of X_train must equal to the size of y_train" assert X_train.shape[1] == x.shape[0], \ "the feature number of x must be equal to X_train" distances = [sqrt(np.sum((x_train - x)**2)) for x_train in X_train] nearest = np.argsort(distances) topK_y = [y_train[i] for i in nearest[:k]] votes = Counter(topK_y) return votes.most_common(1)[0][0]]]></content>
       <categories>
-        <category>Machine Learning</category>
         <category>Python</category>
         <category>Algorithm</category>
+        <category>Machine Learning</category>
         <category>Algorithm</category>
       </categories>
       <tags>
