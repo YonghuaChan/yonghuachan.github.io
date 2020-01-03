@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[数据结构与算法(Python)]]></title>
     <url>%2F2019%2F08%2F16%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95(Python)%2F</url>
-    <content type="text"><![CDATA[前言最近在重温数据结构与算法, 目前在Gitbook搞了一个学习笔记, Mark一下~]]></content>
+    <content type="text"><![CDATA[Info从头开始用Python实现基础数据结构与算法, 在Gitbook更新学习笔记, Mark一下~]]></content>
       <categories>
         <category>Python</category>
         <category>DataStructure</category>
