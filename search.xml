@@ -1,118 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>find the missing number</title>
-      <link href="/2020/01/04/find-the-missing-number/"/>
-      <url>/2020/01/04/find-the-missing-number/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Question-找到丢失的数字"><a href="#Question-找到丢失的数字" class="headerlink" title="Question: 找到丢失的数字"></a>Question: 找到丢失的数字</h2><p>现在你手上有n-1个数字, 这些数字的范围是[1, n]且这n-1个数字中没有重复的数字.<br>由上述条件可知: 你手上的数字丢失了一个.<br>请编写一段高效的找到该确实数字的代码.</p><a id="more"></a><p><strong>考察需求</strong></p><p>​    首先你应该要对面试官问的这道题的需求, 在这里就是这个数字列表是有序的还是无序的? 那么你问了面试官之后呢, 面试就告诉你了, 这就是一个良好的开始.</p><p><strong>考察思路</strong>: </p><ul><li>首先需要问清楚题目意思<ul><li>这个数字列表是有序的还是无序的? </li></ul></li><li>考虑各种方法的时间复杂度, 空间复杂度</li><li>算法的思路<ul><li>第一步应该怎么做</li><li>第二步应该怎么做</li></ul></li><li>程序实现<ul><li>能不能写出一些测试用例, test_case, 用我们写好的程序跑过去?</li></ul></li></ul><h3 id="实现思路-5种"><a href="#实现思路-5种" class="headerlink" title="实现思路(5种)"></a><strong>实现思路(5种)</strong></h3><p><strong>第1种: 先排序, 再用二分法**</strong></p><ul><li><p>使用二分法</p></li><li><ul><li>这就涉及到<strong>我们的List是有序的还是无序的?</strong></li></ul></li><li><p>先排序, 再用二分法</p></li><li><ul><li>这就涉及到各种排序算法的优劣性</li><li>List.sort()或者sorted(List)</li></ul></li></ul><p><strong>第2种: 先排序, 再用线性的查找方式</strong></p><ul><li>也就是for循环呗, 每次看这个 i 等不等于上一个 i+1</li><li>不等于的话就把当前的 i 打印出来</li></ul><p><strong>第3种: 先求和(速度非常快)</strong></p><ul><li><p>首先我们是缺少了一个数字对不对?</p></li><li><ul><li>我们可以把这些数字加起来, 求和, 记为 sum_now</li></ul></li><li><p>然后如果我们 1~n 的数字都存在的话, 原本的1到n的累加和我们是不是已经知道了</p></li><li><ul><li>也就是 (1+n) * n / 2</li><li>(首相+末项) × 项数 ÷ 2 </li><li>记为 sum_all</li></ul></li><li><p>那么 sum_all - sum_now 就能得出我们缺失的那个数字</p></li></ul><p><strong>第4种: 计数排序</strong></p><ul><li><p>可以理解为现在我们有 n 个抽屉, 编号 1~n 号</p></li><li><p>然后我们遇到一个数字, 就把这个数字放到抽屉里面去</p></li><li><ul><li>这个是5我们放到第5个抽屉</li><li>这个是8我们放到第8个抽屉</li></ul></li><li><p>当所有数过完一遍后, 我们看那个抽屉是空的, 我们是不是就知道哪个数缺失了</p></li></ul><p><strong>第5种: XOR 异或</strong> </p><p><strong>(速度是最快的, 异或操作比加减乘除都要快, 因为计算机是要做加减乘除的时候要先转换成二进制再进行计算, 所以直接在二进制层面上的异或操作是最快的)</strong></p><ul><li><p><strong>0^1 = 1</strong></p><p><strong>0^0 = 0</strong></p><p><strong>1^0 = 1</strong></p><p><strong>1^1 = 0</strong></p></li><li><p><strong>A^A = 0</strong></p><p><strong>A^0 = A</strong></p></li><li><p>a⊕b = (¬a ∧ b) ∨ (a ∧¬b)</p></li><li><p>如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。</p></li><li><p>支持交换律</p></li><li><ul><li><strong>A^B^C = C^B^A = …</strong></li></ul></li></ul><p>计算机中数的运算转换成二进制进行的, 比如说我们的 3 转换成二进制就是 0011, 8 转换成二进制就是 1000</p><p>做法:</p><ul><li><p>我们先拿 1异或2一直异或到n</p></li><li><ul><li>1^2^3^4^…^n</li></ul></li><li><p>再和我们的乱序List的异或作比较</p></li><li><ul><li>a0 ^  a1 ^  a2 ^ …^ 0 ^ … ^  an-2</li></ul></li></ul><div align="center"><img src="/2020/01/04/find-the-missing-number/xor_example.png"></div><p>1,2,3,…异或下面的都得到0, 只剩 x 异或下面的 0(因为那个数已经缺失了, 所以是0), 得到 x</p><p>那么这个 x 就是我们丢失的数字</p><p><strong>tips:</strong></p><p>98765 * 32</p><p>等同于</p><p>98765 * 2^5</p><p>等同于在二进制上左移5位-&gt; <strong>位操作</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">98765</span>&lt;&lt;<span class="number">5</span></span><br></pre></td></tr></table></figure><p>是一样的</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[find the missing number]]></title>
+    <url>%2F2020%2F01%2F04%2Ffind-the-missing-number%2F</url>
+    <content type="text"><![CDATA[Question: 找到丢失的数字现在你手上有n-1个数字, 这些数字的范围是[1, n]且这n-1个数字中没有重复的数字.由上述条件可知: 你手上的数字丢失了一个.请编写一段高效的找到该确实数字的代码. 考察需求 ​ 首先你应该要对面试官问的这道题的需求, 在这里就是这个数字列表是有序的还是无序的? 那么你问了面试官之后呢, 面试就告诉你了, 这就是一个良好的开始. 考察思路: 首先需要问清楚题目意思 这个数字列表是有序的还是无序的? 考虑各种方法的时间复杂度, 空间复杂度 算法的思路 第一步应该怎么做 第二步应该怎么做 程序实现 能不能写出一些测试用例, test_case, 用我们写好的程序跑过去? 实现思路(5种)第1种: 先排序, 再用二分法** 使用二分法 这就涉及到我们的List是有序的还是无序的? 先排序, 再用二分法 这就涉及到各种排序算法的优劣性 List.sort()或者sorted(List) 第2种: 先排序, 再用线性的查找方式 也就是for循环呗, 每次看这个 i 等不等于上一个 i+1 不等于的话就把当前的 i 打印出来 第3种: 先求和(速度非常快) 首先我们是缺少了一个数字对不对? 我们可以把这些数字加起来, 求和, 记为 sum_now 然后如果我们 1~n 的数字都存在的话, 原本的1到n的累加和我们是不是已经知道了 也就是 (1+n) * n / 2 (首相+末项) × 项数 ÷ 2 记为 sum_all 那么 sum_all - sum_now 就能得出我们缺失的那个数字 第4种: 计数排序 可以理解为现在我们有 n 个抽屉, 编号 1~n 号 然后我们遇到一个数字, 就把这个数字放到抽屉里面去 这个是5我们放到第5个抽屉 这个是8我们放到第8个抽屉 当所有数过完一遍后, 我们看那个抽屉是空的, 我们是不是就知道哪个数缺失了 第5种: XOR 异或 (速度是最快的, 异或操作比加减乘除都要快, 因为计算机是要做加减乘除的时候要先转换成二进制再进行计算, 所以直接在二进制层面上的异或操作是最快的) 0^1 = 1 0^0 = 0 1^0 = 1 1^1 = 0 A^A = 0 A^0 = A a⊕b = (¬a ∧ b) ∨ (a ∧¬b) 如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。 支持交换律 A^B^C = C^B^A = … 计算机中数的运算转换成二进制进行的, 比如说我们的 3 转换成二进制就是 0011, 8 转换成二进制就是 1000 做法: 我们先拿 1异或2一直异或到n 1^2^3^4^…^n 再和我们的乱序List的异或作比较 a0 ^ a1 ^ a2 ^ …^ 0 ^ … ^ an-2 1,2,3,…异或下面的都得到0, 只剩 x 异或下面的 0(因为那个数已经缺失了, 所以是0), 得到 x 那么这个 x 就是我们丢失的数字 tips: 98765 * 32 等同于 98765 * 2^5 等同于在二进制上左移5位-&gt; 位操作 198765&lt;&lt;5 是一样的]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>数据结构与算法(Python)</title>
-      <link href="/2019/08/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95(Python)/"/>
-      <url>/2019/08/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95(Python)/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Info"><a href="#Info" class="headerlink" title="Info"></a><font color="#E16B8C">Info</font></h2><p>从头开始用Python实现基础数据结构与算法, 在Gitbook更新<a href="https://yonghuachan.gitbook.io/data_structure_with_python/" target="_blank" rel="noopener">学习笔记</a>, Mark一下~</p>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title><![CDATA[数据结构与算法(Python)]]></title>
+    <url>%2F2019%2F08%2F16%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95(Python)%2F</url>
+    <content type="text"><![CDATA[Info从头开始用Python实现基础数据结构与算法, 在Gitbook更新学习笔记, Mark一下~]]></content>
       <categories>
-          
-          <category> Python </category>
-          
-          <category> DataStructure </category>
-          
-          <category> Algorithm </category>
-          
+        <category>Python</category>
+        <category>DataStructure</category>
+        <category>Algorithm</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>python中yield的用法详解[转载]</title>
-      <link href="/2019/08/16/yield_in_python/"/>
-      <url>/2019/08/16/yield_in_python/</url>
-      
-        <content type="html"><![CDATA[<p>原文作者吐槽: </p><blockquote><p>首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，什么参数，什么传递的，还口口声声说自己的教程是最简单的，最浅显易懂的，我就想问没有有考虑过读者的感受。</p></blockquote><a id="more"></a><p>接下来是正题：</p><p>首先，如果你还没有对yield有个初步分认识，那么你先把yield看做“return”，这个是直观的，它首先是个return，普通的return是什么意思，就是在程序中返回某个值，返回之后程序就不再往下运行了。看做return之后再把它看做一个是生成器（generator）的一部分（带yield的函数才是真正的迭代器），好了，如果你对这些不明白的话，那先把yield看做return,然后直接看下面的程序，你就会明白yield的全部意思了：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"starting..."</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        res = <span class="keyword">yield</span> <span class="number">4</span></span><br><span class="line">        print(<span class="string">"res:"</span>,res)</span><br><span class="line">g = foo()</span><br><span class="line">print(next(g))</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(next(g))</span><br></pre></td></tr></table></figure><p>就这么简单的几行代码就让你明白什么是yield，代码的输出这个：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line"><span class="number">4</span></span><br><span class="line">********************</span><br><span class="line">res: <span class="literal">None</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure><p>我直接解释代码运行顺序，相当于代码单步调试：<br>1.程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，而是先得到一个生成器g(相当于一个对象)<br>2.直到调用next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环<br>3.程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，并没有执行赋值给res操作，此时next(g)语句执行完成，所以输出的前两行（第一个是while上面的print的结果,第二个是return出的结果）是执行print(next(g))的结果，<br>4.程序执行print(“<em>“</em>20)，输出20个*<br>5.又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作，这时候要注意，这个时候赋值操作的右边是没有值的（因为刚才那个是return出去了，并没有给赋值操作的左边传参数），所以这个时候res赋值是None,所以接着下面的输出就是res:None,<br>6.程序会继续在while里执行，又一次碰到yield,这个时候同样return 出4，然后程序停止，print函数输出的4就是这次return出的4.<br> <br><strong>到这里你可能就明白yield和return的关系和区别了，带yield的函数是一个生成器，而不是一个函数了，这个生成器有一个函数就是next函数，next就相当于“下一步”生成哪个数，这一次的next开始的地方是接着上一次的next停止的地方执行的，所以调用next的时候，生成器并不会从foo函数的开始执行，只是接着上一步停止的地方开始，然后遇到yield后，return出要生成的数，此步就结束。</strong><br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"starting..."</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        res = <span class="keyword">yield</span> <span class="number">4</span></span><br><span class="line">        print(<span class="string">"res:"</span>,res)</span><br><span class="line">g = foo()</span><br><span class="line">print(next(g))</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(g.send(<span class="number">7</span>))</span><br></pre></td></tr></table></figure><p>再看一个这个生成器的send函数的例子，这个例子就把上面那个例子的最后一行换掉了，输出结果：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line"><span class="number">4</span></span><br><span class="line">********************</span><br><span class="line">res: <span class="number">7</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure><p>先大致说一下send函数的概念：此时你应该注意到上面那个的紫色的字，还有上面那个res的值为什么是None，这个变成了7，到底为什么，这是因为，send是发送一个参数给res的，因为上面讲到，return的时候，并没有把4赋值给res，下次执行的时候只好继续执行赋值操作，只好赋值为None了，而如果用send的话，开始执行的时候，先接着上一次（return 4之后）执行，先把7赋值给了res,然后执行next的作用，遇见下一回的yield，return出结果后结束。<br> <br>5.程序执行g.send(7)，程序会从yield关键字那一行继续向下运行，send会把7这个值赋值给res变量<br>6.由于send方法中包含next()方法，所以程序会继续向下运行执行print方法，然后再次进入while循环<br>7.程序执行再次遇到yield关键字，yield会返回后面的值后，程序再次暂停，直到再次调用next方法或send方法。<br> <br> <br> <br>这就结束了，说一下，为什么用这个生成器，是因为如果用List的话，会占用更大的空间，比如说取0,1,2,3,4,5,6…………1000<br>你可能会这样：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    a=n</span><br></pre></td></tr></table></figure><p>这个时候range(1000)就默认生成一个含有1000个数的list了，所以很占内存。<br>这个时候你可以用刚才的yield组合成生成器进行实现，也可以用xrange(1000)这个生成器实现<br>yield组合：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def foo(num):</span><br><span class="line">    print(&quot;starting...&quot;)</span><br><span class="line">    while num&lt;10:</span><br><span class="line">        num=num+1</span><br><span class="line">        yield num</span><br><span class="line">for n in foo(0):</span><br><span class="line">    print(n)</span><br></pre></td></tr></table></figure><p>输出：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">starting...</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure><p>xrange(1000):</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for n in xrange(1000):</span><br><span class="line">    a=n</span><br></pre></td></tr></table></figure><p>其中要注意的是python3时已经没有xrange()了，在python3中，range()就是xrange()了，你可以在python3中查看range()的类型，它已经是个&lt;class ‘range’&gt;了，而不是一个list了，毕竟这个是需要优化的。 </p><p>本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。<br>原文链接：<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">https://blog.csdn.net/mieleizhi0522/article/details/82142856</a></p>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title><![CDATA[python中yield的用法详解[转载]]]></title>
+    <url>%2F2019%2F08%2F16%2Fyield_in_python%2F</url>
+    <content type="text"><![CDATA[原文作者吐槽: 首先我要吐槽一下，看程序的过程中遇见了yield这个关键字，然后百度的时候，发现没有一个能简单的让我懂的，讲起来真TM的都是头头是道，什么参数，什么传递的，还口口声声说自己的教程是最简单的，最浅显易懂的，我就想问没有有考虑过读者的感受。 接下来是正题： 首先，如果你还没有对yield有个初步分认识，那么你先把yield看做“return”，这个是直观的，它首先是个return，普通的return是什么意思，就是在程序中返回某个值，返回之后程序就不再往下运行了。看做return之后再把它看做一个是生成器（generator）的一部分（带yield的函数才是真正的迭代器），好了，如果你对这些不明白的话，那先把yield看做return,然后直接看下面的程序，你就会明白yield的全部意思了： 123456789def foo(): print("starting...") while True: res = yield 4 print("res:",res)g = foo()print(next(g))print("*"*20)print(next(g)) 就这么简单的几行代码就让你明白什么是yield，代码的输出这个： 12345starting...4********************res: None4 我直接解释代码运行顺序，相当于代码单步调试：1.程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，而是先得到一个生成器g(相当于一个对象)2.直到调用next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环3.程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，并没有执行赋值给res操作，此时next(g)语句执行完成，所以输出的前两行（第一个是while上面的print的结果,第二个是return出的结果）是执行print(next(g))的结果，4.程序执行print(““20)，输出20个*5.又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作，这时候要注意，这个时候赋值操作的右边是没有值的（因为刚才那个是return出去了，并没有给赋值操作的左边传参数），所以这个时候res赋值是None,所以接着下面的输出就是res:None,6.程序会继续在while里执行，又一次碰到yield,这个时候同样return 出4，然后程序停止，print函数输出的4就是这次return出的4. 到这里你可能就明白yield和return的关系和区别了，带yield的函数是一个生成器，而不是一个函数了，这个生成器有一个函数就是next函数，next就相当于“下一步”生成哪个数，这一次的next开始的地方是接着上一次的next停止的地方执行的，所以调用next的时候，生成器并不会从foo函数的开始执行，只是接着上一步停止的地方开始，然后遇到yield后，return出要生成的数，此步就结束。**** 123456789def foo(): print("starting...") while True: res = yield 4 print("res:",res)g = foo()print(next(g))print("*"*20)print(g.send(7)) 再看一个这个生成器的send函数的例子，这个例子就把上面那个例子的最后一行换掉了，输出结果： 12345starting...4********************res: 74 先大致说一下send函数的概念：此时你应该注意到上面那个的紫色的字，还有上面那个res的值为什么是None，这个变成了7，到底为什么，这是因为，send是发送一个参数给res的，因为上面讲到，return的时候，并没有把4赋值给res，下次执行的时候只好继续执行赋值操作，只好赋值为None了，而如果用send的话，开始执行的时候，先接着上一次（return 4之后）执行，先把7赋值给了res,然后执行next的作用，遇见下一回的yield，return出结果后结束。 5.程序执行g.send(7)，程序会从yield关键字那一行继续向下运行，send会把7这个值赋值给res变量6.由于send方法中包含next()方法，所以程序会继续向下运行执行print方法，然后再次进入while循环7.程序执行再次遇到yield关键字，yield会返回后面的值后，程序再次暂停，直到再次调用next方法或send方法。 这就结束了，说一下，为什么用这个生成器，是因为如果用List的话，会占用更大的空间，比如说取0,1,2,3,4,5,6…………1000你可能会这样： 12for n in range(1000): a=n 这个时候range(1000)就默认生成一个含有1000个数的list了，所以很占内存。这个时候你可以用刚才的yield组合成生成器进行实现，也可以用xrange(1000)这个生成器实现yield组合： 1234567def foo(num): print(&quot;starting...&quot;) while num&lt;10: num=num+1 yield numfor n in foo(0): print(n) 输出： 1234567891011starting...12345678910 xrange(1000): 12for n in xrange(1000): a=n 其中要注意的是python3时已经没有xrange()了，在python3中，range()就是xrange()了，你可以在python3中查看range()的类型，它已经是个&lt;class ‘range’&gt;了，而不是一个list了，毕竟这个是需要优化的。 本文章遵循 CC 4.0 by-sa 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/mieleizhi0522/article/details/82142856]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>kNN算法的DIY实现(仿照scikit-learn)</title>
-      <link href="/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/"/>
-      <url>/2019/08/15/Do-it-yourself-implementation-of-kNN-algorithm/</url>
-      
-        <content type="html"><![CDATA[<h2 id="什么是kNN算法"><a href="#什么是kNN算法" class="headerlink" title="什么是kNN算法?"></a><font color="#E16B8C">什么是kNN算法?</font></h2><p>kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。</p><a id="more"></a><p>其特点是: </p><ul><li>思想极度简单</li><li>应用数学知识几乎为零</li><li>效果好</li><li>可以解释机器学习算法使用过程中的很多细节问题</li><li>更完整刻画一起学习应用的流程</li><li>分类精度高, 对缺失值不敏感</li><li>懒加载, 模型复杂度高</li></ul><h2 id="kNN算法执行流程"><a href="#kNN算法执行流程" class="headerlink" title="kNN算法执行流程"></a><font color="#E16B8C">kNN算法执行流程</font></h2><ol><li>根据欧几里得距离公式求出样本点与所有点的距离, </li><li>然后按照距离升序排序, 取出前k个点, </li><li>样本点是什么类别, 那么k个点就是什么类别</li></ol><p><strong>kNN的实质: k个样本如果足够地相似的话, 那么他们就很有可能属于同一个类别</strong></p><h2 id="自己动手实现kNN算法"><a href="#自己动手实现kNN算法" class="headerlink" title="自己动手实现kNN算法"></a><font color="#E16B8C">自己动手实现kNN算法</font></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kNN_classify</span><span class="params">(k, X_train, y_train, x)</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= k &lt;= X_train.shape[<span class="number">0</span>], <span class="string">"k must be valid"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">0</span>] == y_train.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the size of X_train must equal to the size of y_train"</span></span><br><span class="line">    <span class="keyword">assert</span> X_train.shape[<span class="number">1</span>] == x.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the feature number of x must be equal to X_train"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    distances = [sqrt(np.sum((x_train - x)**<span class="number">2</span>)) <span class="keyword">for</span> x_train <span class="keyword">in</span> X_train]</span><br><span class="line">    nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    topK_y = [y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:k]]</span><br><span class="line">    votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title><![CDATA[kNN算法的DIY实现(仿照scikit-learn)]]></title>
+    <url>%2F2019%2F08%2F15%2FDo-it-yourself-implementation-of-kNN-algorithm%2F</url>
+    <content type="text"><![CDATA[什么是kNN算法?kNN算法, 又叫K最近邻算法, 可用于分类或者回归. 所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。 其特点是: 思想极度简单 应用数学知识几乎为零 效果好 可以解释机器学习算法使用过程中的很多细节问题 更完整刻画一起学习应用的流程 分类精度高, 对缺失值不敏感 懒加载, 模型复杂度高 kNN算法执行流程 根据欧几里得距离公式求出样本点与所有点的距离, 然后按照距离升序排序, 取出前k个点, 样本点是什么类别, 那么k个点就是什么类别 kNN的实质: k个样本如果足够地相似的话, 那么他们就很有可能属于同一个类别 自己动手实现kNN算法123456789101112131415161718192021222324import numpy as npfrom math import sqrtfrom collections import Counterdef kNN_classify(k, X_train, y_train, x): assert 1 &lt;= k &lt;= X_train.shape[0], "k must be valid" assert X_train.shape[0] == y_train.shape[0], \ "the size of X_train must equal to the size of y_train" assert X_train.shape[1] == x.shape[0], \ "the feature number of x must be equal to X_train" distances = [sqrt(np.sum((x_train - x)**2)) for x_train in X_train] nearest = np.argsort(distances) topK_y = [y_train[i] for i in nearest[:k]] votes = Counter(topK_y) return votes.most_common(1)[0][0]]]></content>
       <categories>
-          
-          <category> Machine Learning </category>
-          
-          <category> Python </category>
-          
-          <category> Algorithm </category>
-          
-          <category> Algorithm </category>
-          
+        <category>Machine Learning</category>
+        <category>Python</category>
+        <category>Algorithm</category>
+        <category>Algorithm</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> knn </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>First Blog</title>
-      <link href="/2019/08/14/first-blog/"/>
-      <url>/2019/08/14/first-blog/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Start-gt-3W-amp-1H"><a href="#Start-gt-3W-amp-1H" class="headerlink" title="Start -&gt; 3W&amp;1H?"></a><font color="#E16B8C">Start -&gt; 3W&amp;1H?</font></h1><h3 id="你是谁-Who"><a href="#你是谁-Who" class="headerlink" title="你是谁? (Who)"></a><font color="#E16B8C">你是谁? (Who)</font></h3><p>我是Yukirito, 一个兴趣使然的小朋友  </p><a id="more"></a><h3 id="为什么要做Blog-Why"><a href="#为什么要做Blog-Why" class="headerlink" title="为什么要做Blog? (Why)"></a><font color="#E16B8C">为什么要做Blog? (Why)</font></h3><p>大约是3个月前, 我在尝试理解支持向量机的时候, 刷到了<a href="http://freemind.pluskid.org/" target="_blank" rel="noopener">pluskid</a>大神的Blog, 感到十分愉悦. Blog不像社交媒体, 输出碎片化信息. 而是类似于书籍的子集. 按所含信息量多少来举例, 书籍&gt;Blog&gt;朋友圈, 所以Blog比较好输出较为结构化的信息.  By the way, 不要企图用碎片化的知识来提升自己的技术能力</p><h3 id="这个Blog是搞什么的-What"><a href="#这个Blog是搞什么的-What" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>自己之前一直是在印象笔记上做笔记, 现在将逐步把闭门的数据选择后转移到Blog上来<br>包括但不限于: </p><ul><li>主业CS学习笔记</li><li>副业各种点歪了技能书的学习笔记</li><li>游戏攻略</li><li>个人心得</li></ul><h3 id="这个Blog是搞什么的-What-1"><a href="#这个Blog是搞什么的-What-1" class="headerlink" title="这个Blog是搞什么的? (What)"></a><font color="#E16B8C">这个Blog是搞什么的? (What)</font></h3><p>emmmm还没开始更就有鸽的预感…原则上来说更新间隔不大于一周.   </p>]]></content>
-      
-      
+      <tags>
+        <tag>knn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[First Blog]]></title>
+    <url>%2F2019%2F08%2F14%2Ffirst-blog%2F</url>
+    <content type="text"><![CDATA[Start -&gt; 3W&amp;1H?你是谁? (Who)我是Yukirito, 一个兴趣使然的小朋友 为什么要做Blog? (Why)大约是3个月前, 我在尝试理解支持向量机的时候, 刷到了pluskid大神的Blog, 感到十分愉悦. Blog不像社交媒体, 输出碎片化信息. 而是类似于书籍的子集. 按所含信息量多少来举例, 书籍&gt;Blog&gt;朋友圈, 所以Blog比较好输出较为结构化的信息. By the way, 不要企图用碎片化的知识来提升自己的技术能力 这个Blog是搞什么的? (What)自己之前一直是在印象笔记上做笔记, 现在将逐步把闭门的数据选择后转移到Blog上来包括但不限于: 主业CS学习笔记 副业各种点歪了技能书的学习笔记 游戏攻略 个人心得 这个Blog是搞什么的? (What)emmmm还没开始更就有鸽的预感…原则上来说更新间隔不大于一周.]]></content>
       <categories>
-          
-          <category> MISC </category>
-          
+        <category>MISC</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-  
-  
+  </entry>
 </search>
