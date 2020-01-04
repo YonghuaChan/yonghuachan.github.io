@@ -230,6 +230,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2020/01/04/find-the-missing-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukirito">
+      <meta itemprop="description" content="Yonghua Chan(陈 永华)">
+      <meta itemprop="image" content="/images/small_sheep.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukirito's cookbook">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2020/01/04/find-the-missing-number/" class="post-title-link" itemprop="url">find the missing number</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-04 09:37:43 / 修改时间：09:55:35" itemprop="dateCreated datePublished" datetime="2020-01-04T09:37:43+08:00">2020-01-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="Question-找到丢失的数字"><a href="#Question-找到丢失的数字" class="headerlink" title="Question: 找到丢失的数字"></a>Question: 找到丢失的数字</h2><p>现在你手上有n-1个数字, 这些数字的范围是[1, n]且这n-1个数字中没有重复的数字.<br>由上述条件可知: 你手上的数字丢失了一个.<br>请编写一段高效的找到该确实数字的代码.</p>
+<p><strong>考察需求</strong></p>
+<p>​    首先你应该要对面试官问的这道题的需求, 在这里就是这个数字列表是有序的还是无序的? 那么你问了面试官之后呢, 面试就告诉你了, 这就是一个良好的开始.</p>
+<p><strong>考察思路</strong>: </p>
+<ul>
+<li>首先需要问清楚题目意思<ul>
+<li>这个数字列表是有序的还是无序的? </li>
+</ul>
+</li>
+<li>考虑各种方法的时间复杂度, 空间复杂度</li>
+<li>算法的思路<ul>
+<li>第一步应该怎么做</li>
+<li>第二步应该怎么做</li>
+</ul>
+</li>
+<li>程序实现<ul>
+<li>能不能写出一些测试用例, test_case, 用我们写好的程序跑过去?</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现思路-5种"><a href="#实现思路-5种" class="headerlink" title="实现思路(5种)"></a><strong>实现思路(5种)</strong></h3><p><strong>第1种: 先排序, 再用二分法**</strong></p>
+<ul>
+<li><p>使用二分法</p>
+</li>
+<li><ul>
+<li>这就涉及到<strong>我们的List是有序的还是无序的?</strong></li>
+</ul>
+</li>
+<li><p>先排序, 再用二分法</p>
+</li>
+<li><ul>
+<li>这就涉及到各种排序算法的优劣性</li>
+<li>List.sort()或者sorted(List)</li>
+</ul>
+</li>
+</ul>
+<p><strong>第2种: 先排序, 再用线性的查找方式</strong></p>
+<ul>
+<li>也就是for循环呗, 每次看这个 i 等不等于上一个 i+1</li>
+<li>不等于的话就把当前的 i 打印出来</li>
+</ul>
+<p><strong>第3种: 先求和(速度非常快)</strong></p>
+<ul>
+<li><p>首先我们是缺少了一个数字对不对?</p>
+</li>
+<li><ul>
+<li>我们可以把这些数字加起来, 求和, 记为 sum_now</li>
+</ul>
+</li>
+<li><p>然后如果我们 1~n 的数字都存在的话, 原本的1到n的累加和我们是不是已经知道了</p>
+</li>
+<li><ul>
+<li>也就是 (1+n) * n / 2</li>
+<li>(首相+末项) × 项数 ÷ 2 </li>
+<li>记为 sum_all</li>
+</ul>
+</li>
+<li><p>那么 sum_all - sum_now 就能得出我们缺失的那个数字</p>
+</li>
+</ul>
+<p><strong>第4种: 计数排序</strong></p>
+<ul>
+<li><p>可以理解为现在我们有 n 个抽屉, 编号 1~n 号</p>
+</li>
+<li><p>然后我们遇到一个数字, 就把这个数字放到抽屉里面去</p>
+</li>
+<li><ul>
+<li>这个是5我们放到第5个抽屉</li>
+<li>这个是8我们放到第8个抽屉</li>
+</ul>
+</li>
+<li><p>当所有数过完一遍后, 我们看那个抽屉是空的, 我们是不是就知道哪个数缺失了</p>
+</li>
+</ul>
+<p><strong>第5种: XOR 异或</strong> </p>
+<p><strong>(速度是最快的, 异或操作比加减乘除都要快, 因为计算机是要做加减乘除的时候要先转换成二进制再进行计算, 所以直接在二进制层面上的异或操作是最快的)</strong></p>
+<ul>
+<li><p><strong>0^1 = 1</strong></p>
+<p><strong>0^0 = 0</strong></p>
+<p><strong>1^0 = 1</strong></p>
+<p><strong>1^1 = 0</strong></p>
+</li>
+<li><p><strong>A^A = 0</strong></p>
+<p><strong>A^0 = A</strong></p>
+</li>
+<li><p>a⊕b = (¬a ∧ b) ∨ (a ∧¬b)</p>
+</li>
+<li><p>如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。</p>
+</li>
+<li><p>支持交换律</p>
+</li>
+<li><ul>
+<li><strong>A^B^C = C^B^A = …</strong></li>
+</ul>
+</li>
+</ul>
+<p>计算机中数的运算转换成二进制进行的, 比如说我们的 3 转换成二进制就是 0011, 8 转换成二进制就是 1000</p>
+<p>做法:</p>
+<ul>
+<li><p>我们先拿 1异或2一直异或到n</p>
+</li>
+<li><ul>
+<li>1^2^3^4^…^n</li>
+</ul>
+</li>
+<li><p>再和我们的乱序List的异或作比较</p>
+</li>
+<li><ul>
+<li>a0 ^  a1 ^  a2 ^ …^ 0 ^ … ^  an-2</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+<img src="/2020/01/04/find-the-missing-number/xor_example.png">
+</div>
+
+<p>1,2,3,…异或下面的都得到0, 只剩 x 异或下面的 0(因为那个数已经缺失了, 所以是0), 得到 x</p>
+<p>那么这个 x 就是我们丢失的数字</p>
+<p><strong>tips:</strong></p>
+<p>98765 * 32</p>
+<p>等同于</p>
+<p>98765 * 2^5</p>
+<p>等同于在二进制上左移5位-&gt; <strong>位操作</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">98765</span>&lt;&lt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>是一样的</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yonghuachan.github.io/2019/08/16/数据结构与算法(Python)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -796,7 +1035,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -891,12 +1130,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
 </div>
 
 <!--
